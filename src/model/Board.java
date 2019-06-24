@@ -94,38 +94,4 @@ public class Board {
         dead = true;
     }
 
-    public Memento save() {
-        return new Memento(board, currentX, currentY, dead);
-    }
-
-    public void restore(Memento m) {
-        this.board = m.board;
-        this.currentX = m.currentX;
-        this.currentY = m.currentY;
-        this.dead = m.dead;
-    }
-
-
-    public class Memento {
-        private List<List<String>> board;
-
-        private int currentX;
-        private int currentY;
-
-        private boolean dead;
-
-        private Memento(List<List<String>> board, int currentX, int currentY, boolean dead) {
-            this.board = new ArrayList<>();
-            for (int i = 0; i < board.size(); i++) {
-                List<String> row = new ArrayList<>();
-                for (int j = 0; j < board.get(i).size(); j++) {
-                    row.add(board.get(i).get(j));
-                }
-                this.board.add(row);
-            }
-            this.currentX = currentX;
-            this.currentY = currentY;
-            this.dead = dead;
-        }
-    }
 }

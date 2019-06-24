@@ -9,7 +9,6 @@ public class Launcher {
 
     private Scanner scanner = new Scanner(System.in);
     private Board board = new Board(3, 3);
-    private Caretaker caretaker = new Caretaker(board);
     private boolean keepOnGoing = true;
     private String message = "Succes! ";
 
@@ -26,15 +25,10 @@ public class Launcher {
                 message = "lopen: w / a / s / d, exit: e, undo: z";
                 continue;
             } else if (input.equals("z")){
-                caretaker.undo();
-                message = "Ongedaan gemaakt";
+                message = "Deze funtie is er nog niet!";
                 continue;
             }
-            caretaker.saveState();
             message = board.walk(input);
-            if(message.equals(Board.ALREADY_DEAD_MESSAGE)){
-                caretaker.undo();
-            }
         }
     }
 
