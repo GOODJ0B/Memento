@@ -1,26 +1,46 @@
 package main;
 
 import model.Board;
+import model.Caretaker;
 
 import java.util.Scanner;
 
 public class Launcher {
 
+    private Scanner scanner = new Scanner(System.in);
+    private Board board = new Board(3, 3);
+    private Caretaker caretaker = new Caretaker(board);
+    private boolean keepOnGoing = true;
+    private String message = "Succes! ";
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        Board board = new Board(3, 3);
-        board.printBoard();
-        boolean keepOnGoing = true;
+        new Launcher().run();
+    }
+
+    public void run(){
         while (keepOnGoing) {
-            System.out.print("Input (h for help): ");
-            String in = input.next();
-            if (in.equals("e")) {
+            String input = askForInput(message);
+            if (input.equals("e")) {
                 break;
-            } else if (in.equals("h")) {
-                System.out.println("lopen: w / a / s / d, exit: e, undo: z");
+            } else if (input.equals("h")) {
+                message = "lopen: w / a / s / d, exit: e, undo: z";
+                continue;
+            } else if (input.equals("z")){
+                caretaker.undo();
+                message = "Ongedaan gemaakt";
                 continue;
             }
-            board.walk(in);
+            caretaker.saveState();
+            message = board.walk(input);
+            if(message.equals(Board.ALREADY_DEAD_MESSAGE)){
+                caretaker.undo();
+            }
         }
+    }
+
+    private String askForInput(String message){
+        board.printBoard(message);
+        System.out.print("Input (h for help): ");
+        return scanner.next();
     }
 }
