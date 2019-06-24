@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Board {
 
-    private final int boardHeight = 6;
-    private final int boardWidth = 6;
+    private final int boardHeight = 7;
+    private final int boardWidth = 7;
 
     private List<List<String>> board = new ArrayList<>();
 
@@ -44,16 +44,16 @@ public class Board {
             return;
         }
         switch (direction) {
-            case "l":
+            case "a":
                 changeX(-1);
                 break;
-            case "r":
+            case "d":
                 changeX(1);
                 break;
-            case "u":
+            case "w":
                 changeY(-1);
                 break;
-            case "d":
+            case "s":
                 changeY(1);
                 break;
             default:

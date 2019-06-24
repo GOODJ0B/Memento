@@ -8,7 +8,7 @@ public class Launcher {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Board board = new Board(0, 0);
+        Board board = new Board(3, 3);
         board.printBoard();
         boolean keepOnGoing = true;
         while (keepOnGoing) {
@@ -17,7 +17,7 @@ public class Launcher {
             if (in.equals("e")) {
                 break;
             } else if (in.equals("h")) {
-                System.out.println("lopen: u / d / l / r, exit: e");
+                System.out.println("lopen: w / a / s / d, exit: e, undo: z");
                 continue;
             }
             board.walk(in);
