@@ -12,8 +12,9 @@ public class Caretaker {
         history = new Stack<>();
     }
 
-    public void saveState(){
+    public String walk(String input){
         history.push(originator.save());
+        return originator.walk(input);
     }
 
     public void undo(){

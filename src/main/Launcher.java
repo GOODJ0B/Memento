@@ -30,8 +30,7 @@ public class Launcher {
                 message = "Ongedaan gemaakt";
                 continue;
             }
-            caretaker.saveState();
-            message = board.walk(input);
+            message = caretaker.walk(input);
             if(message.equals(Board.ALREADY_DEAD_MESSAGE)){
                 caretaker.undo();
             }
